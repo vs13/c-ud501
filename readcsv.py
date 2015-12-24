@@ -1,7 +1,7 @@
 import pandas as pd 
 
 def test_run():
-	df = pd.read_csv("quotes.csv")
+	df = pd.read_csv("amzn.csv")
 	print df
 
 if __name__ == "__main__":
