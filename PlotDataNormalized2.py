@@ -19,7 +19,7 @@ def test_run():
 def plot_df(df,title="Stock Prices"):
 	ax = df.plot(title=title)
 	ax.set_xlabel("Date")
-	ax.set_ylabel("Price")
+	ax.set_ylabel("Price in $")
 	plt.show()
 
 def normalized_data(df):
