@@ -20,6 +20,8 @@ def test_run():
 	print np.array([(2,3,4),(5,6,7)])
 	print np.ones((5,4))
 	print np.zeros((5,4))
+	print np.ones((5,4) , dtype=np.int_)
+	print np.random.random((5,4))
 
 def plot_df(df,title="Stock Prices"):
 	ax = df.plot(title=title)
