@@ -34,7 +34,11 @@ def test_run():
 	print a.shape[0]
 	print a.shape[1]
 	print a.size
-	print a.dtype 
+	print a.dtype
+	print a.sum()
+	print a 
+	print a.sum(axis=0) 
+	print a.sum(axis=1) 
 
 def plot_df(df,title="Stock Prices"):
 	ax = df.plot(title=title)
