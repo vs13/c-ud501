@@ -23,6 +23,9 @@ def test_run():
 	print np.ones((5,4) , dtype=np.int_)
 	print np.random.random((5,4))
 	print np.random.rand(5,4)
+	print np.random.normal(size=(2,3)) #Mean 0 SD = 1 
+	print np.random.normal(50,10,size=(2,3)) # Mean 50 SD = 10
+	
 
 def plot_df(df,title="Stock Prices"):
 	ax = df.plot(title=title)
