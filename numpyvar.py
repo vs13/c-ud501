@@ -28,7 +28,11 @@ def test_run():
 	print np.random.randint(10)
 	print np.random.randint(0,10)
 	print np.random.randint(0,10,size=3)
-	print np.random.randint(0,10,size=(2,3)) 
+	print np.random.randint(0,10,size=(2,3))
+	a = np.random.randint(0,10,size=(2,3))
+	print a.shape
+	print a.shape[0]
+	print a.shape[1] 
 
 def plot_df(df,title="Stock Prices"):
 	ax = df.plot(title=title)
