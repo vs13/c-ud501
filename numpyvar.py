@@ -22,6 +22,7 @@ def test_run():
 	print np.zeros((5,4))
 	print np.ones((5,4) , dtype=np.int_)
 	print np.random.random((5,4))
+	print np.random.rand(5,4)
 
 def plot_df(df,title="Stock Prices"):
 	ax = df.plot(title=title)
