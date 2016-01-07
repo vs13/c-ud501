@@ -32,7 +32,9 @@ def test_run():
 	a = np.random.randint(0,10,size=(2,3))
 	print a.shape
 	print a.shape[0]
-	print a.shape[1] 
+	print a.shape[1]
+	print a.size
+	print a.dtype 
 
 def plot_df(df,title="Stock Prices"):
 	ax = df.plot(title=title)
