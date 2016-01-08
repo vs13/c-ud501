@@ -46,7 +46,8 @@ def normalized_data(df):
 
 def compute_daily_returns(df):
 	daily_returns = df.copy()
-	daily_returns[1:] = (df[1:]/df[:-1].values) - 1
+	#daily_returns[1:] = (df[1:]/df[:-1].values) - 1
+	daily_returns  = (df/df.shift(1)) - 1 # Alteranate Method
 	daily_returns.iloc[0] = 0 # Set values at 0th row to zero
 	return daily_returns
 
