@@ -12,19 +12,23 @@ def test_run():
 		#dftmp = dftmp.rename(columns={'Open':symbol,'Close':symbol,'High':symbol,'Low':symbol,'Volume':symbol})
 		dftmp.columns = ['Open'+symbol,'Close'+symbol,'High'+symbol,'Low'+symbol,'Volume'+symbol]
 		df = df.join(dftmp,how="inner")
-	#print df
-	#plot_df(normalized_data(df.ix['2015-01-30':'2015-01-01',['Closeamzn','Closegoogl','Closeaapl']]))
+	#df['Date'] =pd.to_datetime(df.Date)
+	#print df.columns
+	df = df.sort_index()
+	print df
+	plot_df(normalized_data(df.ix['2015-01-01':'2015-01-30',['Closeamzn','Closegoogl','Closeaapl']]))
 	#Slice Rows
-	dftest = df.ix['2015-03-30':'2015-01-01',['Closeamzn','Closegoogl','Closeaapl']]
-	print dftest
+	dftest = df.ix['2015-01-01':'2015-03-30',['Closeamzn','Closegoogl','Closeaapl']]
+	
 	rm = pd.rolling_mean(dftest['Closeamzn'],window=20)
-	#print rm
+	print rm
 	ax = dftest['Closeamzn'].plot(title="AMZN Rolling Mean",label='AMZN')
 	rm.plot(label="Rolling Mean",ax=ax)
 	ax.set_xlabel("Date")
 	ax.set_ylabel("Price")
 	ax.legend(loc='upper left')
-	#plt.show()
+	plt.show()
+	
 
 def plot_df(df,title="Stock Prices"):
 	ax = df.plot(title=title)
