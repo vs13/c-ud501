@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt 
 import numpy as np
+from util import get_data,plot_data
 def test_run():
 	start_date = '26-Dec-14'
 	end_date = '10-May-15'
@@ -15,7 +16,7 @@ def test_run():
 	#df['Date'] =pd.to_datetime(df.Date)
 	#print df.columns
 	df = df.sort_index()
-	print df
+	#print df
 	plot_df(normalized_data(df.ix['2015-01-01':'2015-01-30',['Closeamzn','Closegoogl','Closeaapl']]))
 	#Slice Rows
 	dftest = df.ix['2015-01-01':'2015-03-30',['Closeamzn','Closegoogl','Closeaapl']]
@@ -29,6 +30,9 @@ def test_run():
 	lower_band.plot(label="Lower Band",ax=ax)
 	ax.legend(loc='upper left')
 	ax.set_xlabel
+	#plt.show()
+	dfreturn = compute_daily_returns(dftest['Closeamzn'])
+	plot_data(daily_returns,title="Histogram Daily Returns",ylabel="Daily Returns")
 	plt.show()
 
 def plot_df(df,title="Stock Prices"):
@@ -40,6 +44,13 @@ def plot_df(df,title="Stock Prices"):
 def normalized_data(df):
 	print df/df.ix[0,:]
 	return df/df.ix[0,:]
+
+def compute_daily_returns(df):
+	daily_returns = df.copy()
+	#daily_returns[1:] = (df[1:]/df[:-1].values) - 1
+	daily_returns  = (df/df.shift(1)) - 1 # Alteranate Method
+	daily_returns.iloc[0] = 0 # Set values at 0th row to zero
+	return daily_returns
 
 def get_rolling_mean(values,window):
 	return pd.rolling_mean(values,window=window)
