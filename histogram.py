@@ -1,7 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt 
 import numpy as np
-from util import get_data,plot_data
 def test_run():
 	start_date = '26-Dec-14'
 	end_date = '10-May-15'
@@ -17,10 +16,11 @@ def test_run():
 	#print df.columns
 	df = df.sort_index()
 	#print df
-	plot_df(normalized_data(df.ix['2015-01-01':'2015-01-30',['Closeamzn','Closegoogl','Closeaapl']]))
+	
+	#plot_df(normalized_data(df.ix['2015-01-01':'2015-01-30',['Closeamzn','Closegoogl','Closeaapl']]))
 	#Slice Rows
 	dftest = df.ix['2015-01-01':'2015-03-30',['Closeamzn','Closegoogl','Closeaapl']]
-	
+	'''
 	rm_amzn = get_rolling_mean(dftest['Closeamzn'],window=20)
 	rstd_amzn = get_rolling_std(dftest['Closeamzn'],window=20)
 	upper_band,lower_band = get_bollinger_bands(rm_amzn,rstd_amzn)
@@ -31,8 +31,10 @@ def test_run():
 	ax.legend(loc='upper left')
 	ax.set_xlabel
 	#plt.show()
+	'''
 	dfreturn = compute_daily_returns(dftest['Closeamzn'])
-	plot_data(daily_returns,title="Histogram Daily Returns",ylabel="Daily Returns")
+	plot_df(dfreturn,title="Histogram Daily Returns")
+	dfreturn.hist(bins=20)
 	plt.show()
 
 def plot_df(df,title="Stock Prices"):
