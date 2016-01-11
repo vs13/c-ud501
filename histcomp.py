@@ -32,15 +32,11 @@ def test_run():
 	ax.set_xlabel
 	#plt.show()
 	'''
-	dfreturn = compute_daily_returns(dftest['Closeamzn'])
-	#plot_df(dfreturn,title="Histogram Daily Returns")
-	dfreturn.hist(bins=20)
-	mean = dfreturn.mean()
-	std = dfreturn.std()
-	plt.axvline(mean,color='w',linestyle='dashed',linewidth=2)
-	plt.axvline(std,color='r',linestyle='dashed',linewidth=2)
-	plt.axvline(-std,color='r',linestyle='dashed',linewidth=2)
-	print dfreturn.kurtosis()
+	dfreturn = compute_daily_returns(dftest)
+	dfreturn['Closeamzn'].hist(bins=20,label="AMZN")
+	dfreturn['Closegoogl'].hist(bins=20,label="GOOGL")
+	dfreturn['Closeaapl'].hist(bins=20,label="AAPL")
+	plt.legend(loc='upper right')
 	plt.show()
 
 def plot_df(df,title="Stock Prices"):
